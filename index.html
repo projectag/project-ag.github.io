@@ -6,11 +6,7 @@
   <title>Project Access Granted</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * {margin: 0; padding: 0; box-sizing: border-box;}
     body {
       background-color: #0a0a0a;
       color: #e0e0e0;
@@ -19,183 +15,90 @@
       overflow-x: hidden;
     }
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 60px;
-      background: rgba(20, 20, 20, 0.95);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 60px; background: rgba(20, 20, 20, 0.95);
+      position: fixed; width: 100%; top: 0; z-index: 1000;
       border-bottom: 1px solid #1f1f1f;
     }
-    .logo {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
-      color: #00ffcc;
-      letter-spacing: 2px;
-    }
+    .logo {font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: #00ffcc; letter-spacing: 2px;}
     nav a {
-      color: #e0e0e0;
-      margin-left: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
+      color: #e0e0e0; margin-left: 30px; text-decoration: none; font-weight: 600; transition: color 0.3s;
     }
-    nav a:hover {
-      color: #00ffcc;
-    }
-    section {
-      padding: 120px 60px;
-      min-height: 100vh;
-      position: relative;
-    }
+    nav a:hover {color: #00ffcc;}
+    section {padding: 120px 60px; min-height: 100vh; position: relative;}
+
+    /* HOME SECTION */
     .home {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
       background: radial-gradient(circle at top, #101010, #000);
       overflow: hidden;
     }
     .cyber-grid {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(
-        0deg,
-        rgba(0, 255, 204, 0.05),
-        rgba(0, 255, 204, 0.05) 1px,
-        transparent 1px,
-        transparent 40px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        rgba(0, 255, 204, 0.05),
-        rgba(0, 255, 204, 0.05) 1px,
-        transparent 1px,
-        transparent 40px
-      );
-      animation: moveGrid 8s linear infinite;
-      z-index: 0;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: repeating-linear-gradient(0deg, rgba(0,255,204,0.05), rgba(0,255,204,0.05) 1px, transparent 1px, transparent 40px),
+                  repeating-linear-gradient(90deg, rgba(0,255,204,0.05), rgba(0,255,204,0.05) 1px, transparent 1px, transparent 40px);
+      animation: moveGrid 8s linear infinite; z-index: 0;
     }
-    @keyframes moveGrid {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(40px, 40px); }
-    }
+    @keyframes moveGrid {0% {transform: translate(0, 0);} 100% {transform: translate(40px, 40px);}}
     .home h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3rem;
-      color: #00ffcc;
-      margin-bottom: 20px;
-      z-index: 1;
+      font-family: 'Orbitron', sans-serif; font-size: 3rem; color: #00ffcc; margin-bottom: 20px; z-index: 1;
       animation: fadeInDown 2s ease;
     }
     .home p {
-      max-width: 600px;
-      font-size: 1.2rem;
-      color: #ccc;
-      z-index: 1;
-      animation: fadeInUp 2.5s ease;
+      max-width: 600px; font-size: 1.2rem; color: #ccc; z-index: 1; animation: fadeInUp 2.5s ease;
     }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeInDown {from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);}}
+    @keyframes fadeInUp {from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);}}
+
+    /* ABOUT SECTION */
+    .about {background: #0d0d0d; position: relative;}
+    .about h2, .contact h2, .governance h2 {
+      font-family: 'Orbitron', sans-serif; color: #00ffcc; margin-bottom: 20px; text-transform: uppercase;
     }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .about {
-      background: #0d0d0d;
-      position: relative;
-    }
-    .about h2, .contact h2 {
-      font-family: 'Orbitron', sans-serif;
-      color: #00ffcc;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-    .about p {
-      line-height: 1.7;
-      color: #bbb;
-      max-width: 800px;
-    }
-    .about-placeholder {
-      margin-top: 30px;
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+    .about p {line-height: 1.7; color: #bbb; max-width: 800px;}
+    .about-placeholder {margin-top: 30px; display: flex; gap: 20px; flex-wrap: wrap;}
     .about-placeholder div {
-      background: #111;
-      width: 220px;
-      height: 150px;
-      border-radius: 10px;
-      border: 1px solid #222;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #555;
-      font-size: 0.9rem;
-      transition: all 0.3s;
+      background: #111; width: 220px; height: 150px; border-radius: 10px; border: 1px solid #222;
+      display: flex; align-items: center; justify-content: center; color: #555; font-size: 0.9rem; transition: all 0.3s;
     }
-    .about-placeholder div:hover {
-      border-color: #00ffcc;
-      color: #00ffcc;
-      transform: scale(1.05);
+    .about-placeholder div:hover {border-color: #00ffcc; color: #00ffcc; transform: scale(1.05);}
+
+    /* GOONS SECTION */
+    .goons {margin-top: 60px;}
+    .goons h3 {color: #00ffcc; font-size: 1.4rem; margin-bottom: 20px; text-transform: uppercase;}
+    .goon-cards {display: flex; flex-wrap: wrap; gap: 30px;}
+    .goon {
+      background: #111; border: 1px solid #222; border-radius: 10px; padding: 20px; width: 220px; text-align: center; transition: all 0.3s;
     }
-    .goons {
-      margin-top: 40px;
+    .goon:hover {border-color: #00ffcc; transform: scale(1.05); box-shadow: 0 0 15px #00ffcc55;}
+    .goon img {
+      width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px;
+      border: 2px solid #00ffcc33; background: #0d0d0d; transition: box-shadow 0.3s;
     }
-    .goons h3 {
-      color: #00ffcc;
-      font-size: 1.2rem;
-      margin-bottom: 10px;
+    .goon:hover img {box-shadow: 0 0 15px #00ffccaa;}
+    .goon h4 {color: #00ffcc; font-size: 1.1rem; margin-bottom: 5px;}
+    .goon p {color: #bbb; font-size: 0.9rem;}
+
+    /* GOVERNANCE SECTION */
+    .governance {background: #0b0b0b; padding-top: 100px;}
+    .governance-list {margin-top: 30px; line-height: 2; color: #ccc;}
+    .foundation {
+      margin-top: 40px; background: #111; border-left: 4px solid #00ffcc;
+      padding: 20px; border-radius: 10px; color: #bbb;
     }
-    .goons ul {
-      list-style: none;
-    }
-    .goons li {
-      margin-bottom: 8px;
-    }
-    .contact form {
-      display: flex;
-      flex-direction: column;
-      max-width: 400px;
-    }
+    .foundation h3 {color: #00ffcc; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;}
+
+    /* CONTACT SECTION */
+    .contact form {display: flex; flex-direction: column; max-width: 400px;}
     .contact input, .contact textarea {
-      background: #111;
-      border: 1px solid #222;
-      padding: 10px;
-      margin-bottom: 15px;
-      color: #fff;
-      border-radius: 6px;
+      background: #111; border: 1px solid #222; padding: 10px; margin-bottom: 15px; color: #fff; border-radius: 6px;
     }
     .contact button {
-      background: #00ffcc;
-      border: none;
-      padding: 12px;
-      border-radius: 6px;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
+      background: #00ffcc; border: none; padding: 12px; border-radius: 6px; color: #000; font-weight: bold; cursor: pointer; transition: background 0.3s;
     }
-    .contact button:hover {
-      background: #00d1a3;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #050505;
-      color: #555;
-      font-size: 0.9rem;
-    }
+    .contact button:hover {background: #00d1a3;}
+
+    footer {text-align: center; padding: 20px; background: #050505; color: #555; font-size: 0.9rem;}
   </style>
 </head>
 <body>
@@ -204,6 +107,7 @@
     <nav>
       <a href="#home">Home</a>
       <a href="#about">About Us</a>
+      <a href="#governance">Governance</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -228,13 +132,50 @@
 
     <div class="goons">
       <h3>Meet the Goons</h3>
-      <ul>
-        <li>Cybersecurity Analysts</li>
-        <li>Red Team & Blue Team Specialists</li>
-        <li>Developers & Innovators</li>
-        <li>Network & System Engineers</li>
-        <li>Threat Researchers</li>
-      </ul>
+      <div class="goon-cards">
+        <div class="goon">
+          <img src="https://via.placeholder.com/100" alt="Al Francis">
+          <h4>Al Francis</h4>
+          <p>Co-Founder</p>
+        </div>
+        <div class="goon">
+          <img src="https://via.placeholder.com/100" alt="Aifree">
+          <h4>Aifree</h4>
+          <p>Co-Founder</p>
+        </div>
+        <div class="goon">
+          <img src="https://via.placeholder.com/100" alt="Joel">
+          <h4>Joel</h4>
+          <p>Tech Advisor</p>
+        </div>
+        <div class="goon">
+          <img src="https://via.placeholder.com/100" alt="Giovanni">
+          <h4>Giovanni</h4>
+          <p>Governance Advisor</p>
+        </div>
+        <div class="goon">
+          <img src="https://via.placeholder.com/100" alt="Nico">
+          <h4>Nico</h4>
+          <p>Community Lead</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="governance" class="governance">
+    <h2>Governance Structure</h2>
+    <div class="governance-list">
+      <p>- Global Governance</p>
+      <p>- Philippines Governance Team</p>
+      <p>- Islands Governance Team (Luzon, Visayas, Mindanao)</p>
+      <p>- Provincial Governance</p>
+      <p>- Municipal Governance</p>
+    </div>
+
+    <div class="foundation">
+      <h3>Project AG Foundation</h3>
+      <p>Home of Emerging Technologies</p>
+      <p>We are the leading Technology Community worldwide.</p>
     </div>
   </section>
 
