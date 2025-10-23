@@ -16,6 +16,7 @@
       color: #e0e0e0;
       font-family: 'Inter', sans-serif;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
     header {
       display: flex;
@@ -48,6 +49,7 @@
     section {
       padding: 120px 60px;
       min-height: 100vh;
+      position: relative;
     }
     .home {
       display: flex;
@@ -56,20 +58,61 @@
       align-items: center;
       text-align: center;
       background: radial-gradient(circle at top, #101010, #000);
+      overflow: hidden;
+    }
+    .cyber-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 204, 0.05),
+        rgba(0, 255, 204, 0.05) 1px,
+        transparent 1px,
+        transparent 40px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(0, 255, 204, 0.05),
+        rgba(0, 255, 204, 0.05) 1px,
+        transparent 1px,
+        transparent 40px
+      );
+      animation: moveGrid 8s linear infinite;
+      z-index: 0;
+    }
+    @keyframes moveGrid {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(40px, 40px); }
     }
     .home h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 3rem;
       color: #00ffcc;
       margin-bottom: 20px;
+      z-index: 1;
+      animation: fadeInDown 2s ease;
     }
     .home p {
       max-width: 600px;
       font-size: 1.2rem;
       color: #ccc;
+      z-index: 1;
+      animation: fadeInUp 2.5s ease;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .about {
       background: #0d0d0d;
+      position: relative;
     }
     .about h2, .contact h2 {
       font-family: 'Orbitron', sans-serif;
@@ -81,6 +124,30 @@
       line-height: 1.7;
       color: #bbb;
       max-width: 800px;
+    }
+    .about-placeholder {
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .about-placeholder div {
+      background: #111;
+      width: 220px;
+      height: 150px;
+      border-radius: 10px;
+      border: 1px solid #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+    .about-placeholder div:hover {
+      border-color: #00ffcc;
+      color: #00ffcc;
+      transform: scale(1.05);
     }
     .goons {
       margin-top: 40px;
@@ -142,6 +209,7 @@
   </header>
 
   <section id="home" class="home">
+    <div class="cyber-grid"></div>
     <h1>Project Access Granted</h1>
     <p>Founded in Iloilo City, Project-AG is composed of cybersecurity professionals, developers, and innovators working together to secure the digital frontier.</p>
   </section>
@@ -149,6 +217,14 @@
   <section id="about" class="about">
     <h2>About Us</h2>
     <p>Project Access Granted (Project-AG) is a Cyber Security Group established in Iloilo City. We are a collective of passionate professionals in cybersecurity, software development, and IT innovation. Our goal is to protect, educate, and innovate in the ever-evolving landscape of cyber defense.</p>
+
+    <div class="about-placeholder">
+      <div>Team Vision</div>
+      <div>Cyber Defense Projects</div>
+      <div>Community Outreach</div>
+      <div>Innovation Hub</div>
+      <div>Training & Workshops</div>
+    </div>
 
     <div class="goons">
       <h3>Meet the Goons</h3>
