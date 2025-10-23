@@ -19,13 +19,20 @@
       padding: 20px 60px; background: rgba(20, 20, 20, 0.95);
       position: fixed; width: 100%; top: 0; z-index: 1000;
       border-bottom: 1px solid #1f1f1f;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    header.scrolled {
+      background: rgba(0, 0, 0, 0.95);
+      box-shadow: 0 2px 10px #00ffcc33;
     }
     .logo {font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: #00ffcc; letter-spacing: 2px;}
     nav a {
-      color: #e0e0e0; margin-left: 30px; text-decoration: none; font-weight: 600; transition: color 0.3s;
+      color: #e0e0e0; margin-left: 30px; text-decoration: none; font-weight: 600; transition: color 0.3s, transform 0.3s;
     }
-    nav a:hover {color: #00ffcc;}
-    section {padding: 120px 60px; min-height: 100vh; position: relative;}
+    nav a:hover {color: #00ffcc; transform: scale(1.05);}
+
+    section {padding: 120px 60px; min-height: 100vh; position: relative; opacity: 0; transform: translateY(40px); transition: all 0.8s ease;}
+    section.visible {opacity: 1; transform: translateY(0);}
 
     /* HOME SECTION */
     .home {
@@ -47,12 +54,20 @@
     .home p {
       max-width: 600px; font-size: 1.2rem; color: #ccc; z-index: 1; animation: fadeInUp 2.5s ease;
     }
+    .home .foundation {
+      margin-top: 40px; text-align: center; z-index: 1;
+      background: #111; border-left: 4px solid #00ffcc;
+      padding: 20px 30px; border-radius: 10px; color: #bbb;
+      animation: fadeInUp 3s ease;
+    }
+    .home .foundation h3 {color: #00ffcc; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;}
+
     @keyframes fadeInDown {from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);}}
     @keyframes fadeInUp {from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);}}
 
     /* ABOUT SECTION */
     .about {background: #0d0d0d; position: relative;}
-    .about h2, .contact h2, .governance h2 {
+    .about h2, .contact h2 {
       font-family: 'Orbitron', sans-serif; color: #00ffcc; margin-bottom: 20px; text-transform: uppercase;
     }
     .about p {line-height: 1.7; color: #bbb; max-width: 800px;}
@@ -79,15 +94,6 @@
     .goon h4 {color: #00ffcc; font-size: 1.1rem; margin-bottom: 5px;}
     .goon p {color: #bbb; font-size: 0.9rem;}
 
-    /* GOVERNANCE SECTION */
-    .governance {background: #0b0b0b; padding-top: 100px;}
-    .governance-list {margin-top: 30px; line-height: 2; color: #ccc;}
-    .foundation {
-      margin-top: 40px; background: #111; border-left: 4px solid #00ffcc;
-      padding: 20px; border-radius: 10px; color: #bbb;
-    }
-    .foundation h3 {color: #00ffcc; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;}
-
     /* CONTACT SECTION */
     .contact form {display: flex; flex-direction: column; max-width: 400px;}
     .contact input, .contact textarea {
@@ -102,12 +108,11 @@
   </style>
 </head>
 <body>
-  <header>
+  <header id="header">
     <div class="logo">PROJECT-AG</div>
     <nav>
       <a href="#home">Home</a>
       <a href="#about">About Us</a>
-      <a href="#governance">Governance</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -116,6 +121,12 @@
     <div class="cyber-grid"></div>
     <h1>Project Access Granted</h1>
     <p>Founded in Iloilo City, Project-AG is composed of cybersecurity professionals, developers, and innovators working together to secure the digital frontier.</p>
+
+    <div class="foundation">
+      <h3>Project AG Foundation</h3>
+      <p>Home of Emerging Technologies</p>
+      <p>We are the leading Technology Community worldwide.</p>
+    </div>
   </section>
 
   <section id="about" class="about">
@@ -162,23 +173,6 @@
     </div>
   </section>
 
-  <section id="governance" class="governance">
-    <h2>Governance Structure</h2>
-    <div class="governance-list">
-      <p>- Global Governance</p>
-      <p>- Philippines Governance Team</p>
-      <p>- Islands Governance Team (Luzon, Visayas, Mindanao)</p>
-      <p>- Provincial Governance</p>
-      <p>- Municipal Governance</p>
-    </div>
-
-    <div class="foundation">
-      <h3>Project AG Foundation</h3>
-      <p>Home of Emerging Technologies</p>
-      <p>We are the leading Technology Community worldwide.</p>
-    </div>
-  </section>
-
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
     <form>
@@ -192,5 +186,27 @@
   <footer>
     &copy; 2025 Project Access Granted. All Rights Reserved.
   </footer>
+
+  <script>
+    // Smooth scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {threshold: 0.2});
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+  </script>
 </body>
 </html>
