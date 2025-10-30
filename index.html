@@ -3,215 +3,179 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Project Access Granted - Cybersecurity professionals, developers, and innovators working together to secure the digital frontier.">
   <title>Project Access Granted</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {
-      background-color: #0a0a0a;
-      color: #e0e0e0;
-      font-family: 'Inter', sans-serif;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-    header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 60px; background: rgba(20, 20, 20, 0.95);
-      position: fixed; width: 100%; top: 0; z-index: 1000;
-      border-bottom: 1px solid #1f1f1f;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-    header.scrolled {
-      background: rgba(0, 0, 0, 0.95);
-      box-shadow: 0 2px 10px #00ffcc33;
-    }
-    .logo {font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: #00ffcc; letter-spacing: 2px;}
-    nav a {
-      color: #e0e0e0; margin-left: 30px; text-decoration: none; font-weight: 600; transition: color 0.3s, transform 0.3s;
-    }
-    nav a:hover {color: #00ffcc; transform: scale(1.05);}
-
-    section {padding: 120px 60px; min-height: 100vh; position: relative; opacity: 0; transform: translateY(40px); transition: all 0.8s ease;}
-    section.visible {opacity: 1; transform: translateY(0);}
-
-    /* HOME SECTION */
-    .home {
-      display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-      background: radial-gradient(circle at top, #101010, #000);
-      overflow: hidden;
-    }
-    .cyber-grid {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: repeating-linear-gradient(0deg, rgba(0,255,204,0.05), rgba(0,255,204,0.05) 1px, transparent 1px, transparent 40px),
-                  repeating-linear-gradient(90deg, rgba(0,255,204,0.05), rgba(0,255,204,0.05) 1px, transparent 1px, transparent 40px);
-      animation: moveGrid 8s linear infinite; z-index: 0;
-    }
-    @keyframes moveGrid {0% {transform: translate(0, 0);} 100% {transform: translate(40px, 40px);}}
-    .home h1 {
-      font-family: 'Orbitron', sans-serif; font-size: 3rem; color: #00ffcc; margin-bottom: 20px; z-index: 1;
-      animation: fadeInDown 2s ease;
-    }
-    .home p {
-      max-width: 600px; font-size: 1.2rem; color: #ccc; z-index: 1; animation: fadeInUp 2.5s ease;
-    }
-    .home .foundation {
-      margin-top: 60px; text-align: center; z-index: 1;
-      background: #111; border-left: 4px solid #00ffcc;
-      padding: 30px 40px; border-radius: 10px; color: #bbb;
-      animation: fadeInUp 3s ease;
-      box-shadow: 0 0 20px #00ffcc33;
-    }
-    .home .foundation h3 {color: #00ffcc; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;}
-
-    @keyframes fadeInDown {from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);}}
-    @keyframes fadeInUp {from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);}}
-
-    /* ABOUT SECTION */
-    .about {background: #0d0d0d; position: relative;}
-    .about h2, .contact h2 {
-      font-family: 'Orbitron', sans-serif; color: #00ffcc; margin-bottom: 20px; text-transform: uppercase;
-    }
-    .about p {line-height: 1.7; color: #bbb; max-width: 800px;}
-    .about-placeholder {margin-top: 30px; display: flex; gap: 20px; flex-wrap: wrap;}
-    .about-placeholder div {
-      background: #111; width: 220px; height: 150px; border-radius: 10px; border: 1px solid #222;
-      display: flex; align-items: center; justify-content: center; color: #555; font-size: 0.9rem; transition: all 0.3s;
-    }
-    .about-placeholder div:hover {border-color: #00ffcc; color: #00ffcc; transform: scale(1.05);}
-
-    /* GOONS SECTION */
-    .goons {margin-top: 60px;}
-    .goons h3 {color: #00ffcc; font-size: 1.4rem; margin-bottom: 20px; text-transform: uppercase;}
-    .goon-cards {display: flex; flex-wrap: wrap; gap: 30px;}
-    .goon {
-      background: #111; border: 1px solid #222; border-radius: 10px; padding: 20px; width: 220px; text-align: center; transition: all 0.3s;
-    }
-    .goon:hover {border-color: #00ffcc; transform: scale(1.05); box-shadow: 0 0 15px #00ffcc55;}
-    .goon .circle {
-      width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px;
-      border: 2px solid #00ffcc33; background: #0d0d0d; transition: box-shadow 0.3s;
-      display: inline-block;
-    }
-    .goon:hover .circle {box-shadow: 0 0 15px #00ffccaa;}
-    .goon h4 {color: #00ffcc; font-size: 1.1rem; margin-bottom: 5px;}
-    .goon p {color: #bbb; font-size: 0.9rem;}
-
-    /* CONTACT SECTION */
-    .contact form {display: flex; flex-direction: column; max-width: 400px;}
-    .contact input, .contact textarea {
-      background: #111; border: 1px solid #222; padding: 10px; margin-bottom: 15px; color: #fff; border-radius: 6px;
-    }
-    .contact input:focus, .contact textarea:focus {
-      outline: none; border-color: #00ffcc; box-shadow: 0 0 10px #00ffcc44;
-    }
-    .contact button {
-      background: #00ffcc; border: none; padding: 12px; border-radius: 6px; color: #000; font-weight: bold; cursor: pointer; transition: background 0.3s;
-    }
-    .contact button:hover {background: #00d1a3; box-shadow: 0 0 10px #00ffcc66;}
-
-    footer {text-align: center; padding: 20px; background: #050505; color: #555; font-size: 0.9rem;}
-  </style>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
 </head>
 <body>
   <header id="header">
-    <div class="logo">PROJECT-AG</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About Us</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="container">
+      <a href="#" class="nav-logo">Project AG</a>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+      </nav>
+    </div>
   </header>
 
-  <section id="home" class="home">
-    <div class="cyber-grid"></div>
-    <h1>Project Access Granted</h1>
-    <p>Founded in Iloilo City, Project-AG is composed of cybersecurity professionals, developers, and innovators working together to secure the digital frontier.</p>
+  <main>
+    <section id="home" class="home">
+      <div class="container">
+        <h1>Project Access Granted</h1>
+        <p>Founded in Iloilo City, Project-AG is composed of cybersecurity professionals, developers, and innovators working together to secure the digital frontier.</p>
+      </div>
+    </section>
 
-    <div class="foundation">
-      <h3>Project AG Foundation</h3>
-      <p>Home of Emerging Technologies</p>
-      <p>We are the leading Technology Community worldwide.</p>
-    </div>
-  </section>
+    <section id="about" class="about">
+      <div class="container">
+        <h2>About Us</h2>
+        <p>Project Access Granted (Project-AG) is a Cyber Security Group established in Iloilo City. We are a collective of passionate professionals in cybersecurity, software development, and IT innovation.</p>
+        
+        <div class="program-cards">
+          <div class="program-card">
+            <div class="icon-circle">
+              <img src="assets/images/community.png" alt="Community" class="program-icon">
+            </div>
+            <h3>Outreach Community</h3>
+            <p>Connecting and empowering through community engagement</p>
+          </div>
+          <div class="program-card">
+            <div class="icon-circle">
+              <img src="assets/images/training.png" alt="Training" class="program-icon">
+            </div>
+            <h3>Training & Workshop</h3>
+            <p>Hands-on learning experiences in cybersecurity</p>
+          </div>
+          <div class="program-card">
+            <div class="icon-circle">
+              <img src="assets/images/projects.png" alt="Projects" class="program-icon">
+            </div>
+            <h3>Cyber Security Projects</h3>
+            <p>Real-world security solutions and research</p>
+          </div>
+          <div class="program-card">
+            <div class="icon-circle">
+              <img src="assets/images/hub.png" alt="Hub" class="program-icon">
+            </div>
+            <h3>Innovation Hub</h3>
+            <p>Fostering creativity and technological advancement</p>
+          </div>
+        </div>
 
-  <section id="about" class="about">
-    <h2>About Us</h2>
-    <p>Project Access Granted (Project-AG) is a Cyber Security Group established in Iloilo City. We are a collective of passionate professionals in cybersecurity, software development, and IT innovation. Our goal is to protect, educate, and innovate in the ever-evolving landscape of cyber defense.</p>
-
-    <div class="about-placeholder">
-      <div>Team Vision</div>
-      <div>Cyber Defense Projects</div>
-      <div>Community Outreach</div>
-      <div>Innovation Hub</div>
-      <div>Training & Workshops</div>
-    </div>
-
-    <div class="goons">
-      <h3>Meet the Goons</h3>
-      <div class="goon-cards">
-        <div class="goon">
-          <div class="circle"></div>
-          <h4>Al Francis</h4>
-          <p>Co-Founder</p>
-        </div>
-        <div class="goon">
-          <div class="circle"></div>
-          <h4>Aifree</h4>
-          <p>Co-Founder</p>
-        </div>
-        <div class="goon">
-          <div class="circle"></div>
-          <h4>Joel</h4>
-          <p>Tech Advisor</p>
-        </div>
-        <div class="goon">
-          <div class="circle"></div>
-          <h4>Giovanni</h4>
-          <p>Governance Advisor</p>
-        </div>
-        <div class="goon">
-          <div class="circle"></div>
-          <h4>Nico</h4>
-          <p>Community Lead</p>
+        <h3 class="team-heading">Our Team</h3>
+        <div class="goon-cards">
+          <div class="goon">
+            <div class="circle">
+              <img src="assets/images/goon3.png" alt="Al" class="goon-avatar">
+            </div>
+            <h3>Al</h3>
+            <p>Binary Architect</p>
+          </div>
+          <div class="goon">
+            <div class="circle">
+              <img src="assets/images/goon1.png" alt="Aifree" class="goon-avatar">
+            </div>
+            <h3>Aifree</h3>
+            <p>Neural Navigator</p>
+          </div>
+          <div class="goon">
+            <div class="circle">
+              <img src="assets/images/goon4.png" alt="Joel" class="goon-avatar">
+            </div>
+            <h3>Joel</h3>
+            <p>Quantum Keeper</p>
+          </div>
+         <div class="goon">
+            <div class="circle">
+              <img src="assets/images/goon2.png" alt="Giovanni" class="goon-avatar">
+            </div>
+            <h3>Giovanni</h3>
+            <p>Encryption Sage</p>
+          </div>
+          <div class="goon">
+            <div class="circle">
+              <img src="assets/images/goon5.png" alt="Nico" class="goon-avatar">
+            </div>
+            <h3>Nico</h3>
+            <p>Circuit Nomad</p>
+          </div> 
+          <div class="goon">
+            <div class="circle">
+              <img src="assets/images/goon6.png" alt="Bobby" class="goon-avatar">
+            </div>
+            <h3>Bobby</h3>
+            <p>Digital Phantom</p>
+          </div>
+          <div class="goon">
+            <div class="circle">
+              <img src="assets/images/goon3.png" alt="Eugene" class="goon-avatar">
+            </div>
+            <h3>Eugene</h3>
+            <p>Chaos Architect</p>
+          </div>
+          <div class="goon">
+            <div class="circle">
+              <img src="assets/images/goon1.png" alt="John" class="goon-avatar">
+            </div>
+            <h3>John</h3>
+            <p>Shadow Guardian</p>
+          </div>
+          <div class="goon">
+            <div class="circle">
+              <img src="assets/images/goon5.png" alt="Kevin" class="goon-avatar">
+            </div>
+            <h3>Kevin</h3>
+            <p>Cyber Sentinel</p>
+          </div>
+          <div class="goon">
+            <div class="circle">
+              <img src="assets/images/goon2.png" alt="Kyle" class="goon-avatar">
+            </div>
+            <h3>Kyle</h3>
+            <p>Matrix Wanderer</p>
+          </div>
+          <div class="goon">
+            <div class="circle">
+              <img src="assets/images/goon4.png" alt="Leandro" class="goon-avatar">
+            </div>
+            <h3>Leandro</h3>
+            <p>Code Alchemist</p>
+          </div>
+          <div class="goon">
+            <div class="circle">
+              <img src="assets/images/goon6.png" alt="Marc" class="goon-avatar">
+            </div>
+            <h3>Marc</h3>
+            <p>Void Walker</p>
+          </div>
+          <div class="goon">
+            <div class="circle">
+              <img src="assets/images/goon1.png" alt="Michael" class="goon-avatar">
+            </div>
+            <h3>Michael</h3>
+            <p>System Wraith</p>
+          </div>
+          <div class="goon">
+            <div class="circle">
+              <img src="assets/images/goon2.png" alt="Rowel" class="goon-avatar">
+            </div>
+            <h3>Rowel</h3>
+            <p>Nexus Hunter</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 Project Access Granted. All Rights Reserved.
+    <div class="container">
+      <p>&copy; 2025 Project Access Granted. All Rights Reserved.</p>
+    </div>
   </footer>
 
-  <script>
-    // Smooth scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {threshold: 0.2});
-
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
-
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) header.classList.add('scrolled');
-      else header.classList.remove('scrolled');
-    });
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
+         
