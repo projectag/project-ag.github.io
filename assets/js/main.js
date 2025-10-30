@@ -1,13 +1,21 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize sections to be visible immediately
+  document.querySelectorAll('section').forEach(section => {
+    section.style.opacity = '1';
+  });
+
   // Smooth scroll animations for sections
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        entry.target.classList.add('animate-in');
       }
     });
-  }, {threshold: 0.2});
+  }, {
+    threshold: 0.1,
+    rootMargin: '50px'
+  });
 
   // Enhanced smooth scroll for navigation
   document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
