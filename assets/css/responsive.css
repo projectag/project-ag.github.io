@@ -1,0 +1,98 @@
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+  .home h1 {
+    font-size: 2.5rem;
+    padding: 0 1rem;
+  }
+
+  .home p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .program-cards {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+    margin: 2rem 0;
+  }
+
+  .program-card {
+    margin-bottom: 1rem;
+  }
+
+  .goon-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .goon {
+    padding: 1rem;
+  }
+
+  .goon .circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .goon h3 {
+    font-size: 1rem;
+  }
+
+  .goon p {
+    font-size: 0.9rem;
+  }
+
+  header nav {
+    gap: 1rem;
+  }
+
+  header nav a {
+    font-size: 0.85rem;
+  }
+
+  .nav-logo {
+    font-size: 1.2rem;
+  }
+
+  section {
+    min-height: auto;
+    padding: 4rem 0;
+  }
+
+  .about {
+    padding-top: 2rem;
+  }
+
+  .team-heading {
+    margin: 2rem 0 1.5rem;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+  .home h1 {
+    font-size: 2rem;
+  }
+
+  .goon-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .program-card {
+    padding: 1.5rem;
+  }
+
+  header nav {
+    gap: 0.8rem;
+  }
+
+  header nav a {
+    font-size: 0.8rem;
+  }
+}
