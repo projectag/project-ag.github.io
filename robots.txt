@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://project-ag.github.io/sitemap.xml
 
-# Allow all robots complete access
-User-agent: *
-Disallow:
+Sitemap: https://project-ag.org/sitemap.xml
